@@ -1,12 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
+  
 <head>
     <meta charset="UTF-8">
-    <title>Combinations</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js"></script>
+    <title>Subset Finder</title>
+<!--    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js"></script> -->
     <script src="./js/script.js"></script>
 </head>
-<body>
-    
+  
+<body style="text-align: center;">
+      
+    <h1 style="color: green;">
+        Subset Finder
+    </h1>
+  
+    <h3 id="po">Input Array Elements</h3>
+    <form class="" action="index.html" method="post">
+        <label for="inputarray">Input Array</label>
+        <input type="text" id="inputarray" name="array[]" value="" /><br>
+        <label for="targetnumber">Target</label>
+        <input type="text" id="targetnumber" name="targetnumber" value="" /><br>
+
+        <button type="button" name="button" onclick="Geeks()">
+            Submit
+        </button>
+    </form>
+    <br>
+  
+    <p id="par"></p>
+  
+
 </body>
+  
 </html>

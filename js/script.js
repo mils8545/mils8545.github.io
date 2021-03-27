@@ -1,17 +1,23 @@
-let numbers = [1,2,3,4,5,6,7,8,9];
+// let numbers = [10,20,30,40,50,60,70,80,90];
 let combos = [];
-let emptycombo = [];
-let total = 27;
+// let emptycombo = [];
+// let total = 27;
 
 let sum = function(nums) {
     return nums.reduce((accumulator, currentValue) => accumulator + currentValue);
 }
 
-let combinations = function (combination, choices, n){
-    if (combination.length == n) {
-        if (total == sum(combination)) {
-            combos.push(combination);
-        }
+let combinations = function (combination, choices, target){
+    let combinationSum = 0;
+    if (combination.length > 0) {
+        combinationSum = sum(combination);
+    } 
+    if (Math.abs((combinationSum-target)/combinationSum) <= 0.0000000000001) {
+        combos.push(combination);
+        return;
+    }
+    if (combinationSum > target) {
+        console.log(combinationSum);
         return;
     }
     for (let i = 0; i < choices.length; i++) {
@@ -19,12 +25,30 @@ let combinations = function (combination, choices, n){
         newCombination.push(choices[i]);
         let newChoices = [...choices];
         newChoices.splice(0, i+1);
-        combinations(newCombination, newChoices, n);
+        combinations(newCombination, newChoices, target);
     }
 }
 
 // combinations(emptycombo, numbers, 6);
-combinations([], numbers, 6);
+// combinations([], numbers, 130);
+// console.log(combos);
 
 
-console.log(combos);
+function Geeks() {
+    let input = document.getElementById('inputarray').value;
+    let targetnumber = document.getElementById('targetnumber').value;
+    combos = [];
+    let numbers = input.split(',').map(Number);
+    let target = 0+targetnumber;
+    console.log(numbers);
+    combinations([], numbers, targetnumber);
+
+    let textOutput = "";
+
+    for (let i = 0; i < combos.length; i++) {
+        textOutput += combos[i].toString().split(",");
+        textOutput += "<br>"        
+    }
+    
+    document.getElementById("par").innerHTML = textOutput;
+}
